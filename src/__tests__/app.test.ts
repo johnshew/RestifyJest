@@ -1,9 +1,12 @@
-import { sum } from '../app';
+import { Server } from '../app';
 
-test('basic', () => {
-  expect(sum()).toBe(0);
-});
+test('basic',  (done) => {
+    let server = new Server(()=>{
+        console.log('Listening');
+        server.close(()=>{
+            console.log('Closed');
+            done();
+        });
+    });
 
-test('basic again', () => {
-  expect(sum(1, 2)).toBe(3);
 });
