@@ -2,16 +2,12 @@
   "name": "restifyjest",
   "version": "1.0.0",
   "description": "Using Jest with Restify",
-  "main": "app.js",
-  "dependencies": {},
-  "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "jest": "^24.5.0",
-    "ts-jest": "^24.0.1",
-    "typescript": "^3.4.1"
-  },
+  "main": "lib/app.js",
   "scripts": {
-    "test": "jest"
+    "build": "tsc",
+    "start": "tsc && node ./lib/app.js",
+    "test": "jest",
+    "watch": "concurrently --kill-others \"tsc -w\" \"nodemon --inspect ./lib/app.js\""
   },
   "repository": {
     "type": "git",
@@ -22,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/johnshew/RestifyJest/issues"
   },
-  "homepage": "https://github.com/johnshew/RestifyJest#readme"
+  "homepage": "https://github.com/johnshew/RestifyJest#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.1",
+    "typescript": "^3.4.1"
+  }
 }
