@@ -9,6 +9,13 @@ export class Server {
 
     constructor(callback?: () => any) {
         this.server = restify.createServer();
+        
+        this.server.get('/',(req,res,done) => {
+            res.write('Got it');
+            res.end();
+            return done();
+        });
+
         this.ready = new Promise<void>((resolve, reject) => {
             this.server.listen(8080, () =>{
                 callback && callback();

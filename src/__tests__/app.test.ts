@@ -12,7 +12,7 @@ test('basic', async (done) => {
 });
 
 
-test('test repeat', async (done) => {
+test('first test', async (done) => {
     let server = new Server(() => {
         console.log('Listening');
         server.close(() => {
@@ -23,7 +23,7 @@ test('test repeat', async (done) => {
 
 });
 
-test('test repeat with await', async (done) => {
+test('test with await', async (done) => {
     let server = new Server();
     await server.ready;
     console.log('Listening');
