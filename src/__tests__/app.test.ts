@@ -1,9 +1,9 @@
 import { Server } from '../app';
 
-test('basic', async (done) => {
-    let server = new Server(() => {
+test('basic',  async (done) => {
+    let server = new Server(()=>{
         console.log('Listening');
-        server.close(() => {
+        server.close(()=>{
             console.log('Closed');
             done();
         });
@@ -12,20 +12,30 @@ test('basic', async (done) => {
 });
 
 
-test('first test', async (done) => {
-    let server = new Server(() => {
+test('test repeat',  async (done) => {
+    let server = new Server(()=>{
         console.log('Listening');
-        server.close(() => {
+        server.close(()=>{
             console.log('Closed');
             done();
         });
     });
 
 });
+
+test('test with async callback',  async (done) => {
+    let server = new Server( async()=>{
+        console.log('Listening');
+        server.close(()=>{
+            console.log('Closed');
+            done();
+        });
+    });
+});
+
 
 test('test with await', async (done) => {
-    let server = new Server();
-    await server.ready;
+    let server = await new Server().ready;
     console.log('Listening');
     await server.close();
     console.log('Closed');

@@ -4,8 +4,7 @@ import { readSync } from 'fs';
 
 export class Server {
     server: restify.Server;
-    ready: Promise<void>;
-    closed : Promise<void>;
+    ready: Promise<Server>;
 
     constructor(callback?: () => any) {
         this.server = restify.createServer();
@@ -16,10 +15,10 @@ export class Server {
             return done();
         });
 
-        this.ready = new Promise<void>((resolve, reject) => {
+        this.ready = new Promise<Server>((resolve, reject) => {
             this.server.listen(8080, () =>{
                 callback && callback();
-                return resolve()
+                return resolve(this);
             });
         });
     }
